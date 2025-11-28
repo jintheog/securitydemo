@@ -1,5 +1,6 @@
 package com.example.securitydemo.controller;
 
+import com.example.securitydemo.service.UserService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class AuthController {
+    private UserService userService;
 
     @GetMapping("login")
     public String login() {

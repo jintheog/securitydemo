@@ -1,5 +1,6 @@
 package com.example.securitydemo.service;
 
+import com.example.securitydemo.entity.User;
 import com.example.securitydemo.repository.UserRepository;
 import com.example.securitydemo.security.CustomUserDetails;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,7 @@ public class CustomUserDetailService implements UserDetailsService {
 
     @Override
     pubilc UserDetails loadUserByUsername(String username) {
-        USer user = userRepository.findByUsername(username)
+        User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> UsernameNotFoundException(username));
 
         return new CustomUserDetails(user);
