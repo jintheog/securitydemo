@@ -14,13 +14,17 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/","info").permitAll() // 두개의 라우팅은 열고
+                .requestMatchers("/","info", "/login").permitAll() // 두개의 라우팅은 열고
                     .anyRequest().authenticated() // 나머지 모두는 로그인 필요
             )
             .formLogin(form -> form
+                    .loginPage("/login") // 커스텀 로그인 페이지 주소
+                    .defaultSuccessUrl("/dashboard", true) // 로그인 성공시 이동할 페이지
+                    .failureUrl("/login") // 로그인 실패시 이동할 페이지
                     .permitAll()
             )
             .logout(logout -> logout
+                    .logoutSuccessUrl("/login") // 로그아웃 성공시 이동할 페이지
                     .permitAll()
             );
 
