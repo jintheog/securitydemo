@@ -1,6 +1,8 @@
 package com.example.securitydemo.service;
 
 import java.util.*;
+
+import com.example.securitydemo.dto.SignupDTO;
 import com.example.securitydemo.entity.User;
 import org.springframework.stereotype.Service;
 
@@ -11,4 +13,10 @@ public interface UserService {
 
     // username 중복확인
     boolean existsByUsername(String username);
+
+    // email 중복확인
+    boolean existsByEmail(String email);
+
+    // 회원가입
+    User register(SignupDTO signupDTO);
 }

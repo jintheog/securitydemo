@@ -16,15 +16,17 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         User user = User.builder()
-                .username("user")
+                .username("testuser")
                 .password(passwordEncoder.encode("1234"))
                 .role("ROLE_USER")
+                .email("test@test.com")
                 .build();
 
         User user2 = User.builder()
-                .username("user2    ")
+                .username("testuser2")
                 .password(passwordEncoder.encode("1234"))
                 .role("ROLE_USER")
+                .email("test2@test2.com")
                 .build();
 
 
@@ -32,6 +34,7 @@ public class DataInitializer implements CommandLineRunner {
                 .username("admin")
                 .password(passwordEncoder.encode("admin"))
                 .role("ROLE_ADMIN")
+                .email("admin@test.com")
                 .build();
 
         userRepository.save(user);
